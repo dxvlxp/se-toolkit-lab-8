@@ -1,0 +1,36 @@
+name: Agent tests
+
+on:
+  push:
+    branches: [main, implementation/lab-8]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          submodules: recursive
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.23"
+          python-version: "3.14.2"
+      - name: Install locked workspace
+        run: uv sync --locked --all-packages --all-groups
+      - name: Test backend, MCP tools, config, and WebSocket transport
+        run: uv run --no-sync --env-file backend/.env.tests.unit.example pytest backend/tests/unit mcp/mcp-obs/tests nanobot/tests -q
+      - name: Check changed Python code
+        run: |
+          uv run --no-sync ruff check nanobot/entrypoint.py nanobot/tests mcp/mcp-obs backend/src/lms_backend/routers/items.py backend/tests/unit/test_items_failure.py
+          uv run --no-sync ruff format --check nanobot/entrypoint.py nanobot/tests mcp/mcp-obs backend/src/lms_backend/routers/items.py backend/tests/unit/test_items_failure.py
+      - name: Validate Compose wiring
+        env:
+          NANOBOT_ACCESS_KEY: test-only-access
+        run: docker compose --env-file .env.docker.example config --quiet
+      - name: Build the agent container
+        run: docker buildx build --load --build-context workspace=. --build-arg REGISTRY_PREFIX_DOCKER_HUB= -t lab8-agent-check ./nanobot
