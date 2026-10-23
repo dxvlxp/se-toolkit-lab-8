@@ -1,10 +1,11 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = "==3.14.*"
 
 [manifest]
 members = [
     "mcp-lms",
+    "mcp-obs",
 ]
 
 [manifest.dependency-groups]
@@ -374,6 +375,23 @@ requires-dist = [
     { name = "opentelemetry-exporter-otlp-proto-grpc", specifier = ">=1.40.0" },
     { name = "opentelemetry-instrumentation-httpx", specifier = ">=0.61b0" },
     { name = "opentelemetry-instrumentation-logging", specifier = ">=0.61b0" },
+    { name = "pydantic", specifier = ">=2.12.0,<3.0.0" },
+]
+
+[[package]]
+name = "mcp-obs"
+version = "0.1.0"
+source = { editable = "mcp-obs" }
+dependencies = [
+    { name = "httpx" },
+    { name = "mcp" },
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "httpx", specifier = "==0.28.1" },
+    { name = "mcp", specifier = ">=1.26.0,<2.0.0" },
     { name = "pydantic", specifier = ">=2.12.0,<3.0.0" },
 ]
 

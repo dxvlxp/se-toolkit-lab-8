@@ -1,6 +1,7 @@
 [tool.uv.workspace]
 members = [
     "mcp-lms",
+    "mcp-obs",
     # "mcp-obs"
 ]
 
