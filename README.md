@@ -73,3 +73,16 @@ In Lab 7 you built one client around your own LLM loop. Here, the agent becomes 
 ### Optional
 
 1. [Add a Telegram Bot Client](./lab/tasks/optional/task-1.md) — same agent, different interface
+
+## Implementation and deploy
+
+The repo-local agent, runtime configuration, LMS/observability skills and
+Docker build are in `nanobot/`. The WebSocket and Flutter clients are pinned
+through the `nanobot-websocket-channel` submodule. Clone with
+`--recurse-submodules` or run `git submodule update --init --recursive`.
+
+Follow the [agent deployment runbook](./nanobot/README.md) for environment
+setup, CLI comparison sessions, Docker deployment and before/after failure
+checks. The [lab report](./REPORT.md) separates source-level findings from
+the live VM evidence still to be collected. Credentials and generated runtime
+state are ignored by Git and excluded from agent build contexts.
