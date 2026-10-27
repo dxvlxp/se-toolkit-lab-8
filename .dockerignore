@@ -16,6 +16,16 @@ venv/
 .vscode/
 
 .env
+*.secret
+**/*.secret
+**/.env
+**/.git
+**/.venv
+nanobot/config.json
+nanobot/config.resolved.json
+nanobot/workspace/sessions/
+nanobot/workspace/cron/
+nanobot/workspace/memory/
 
 tests/
 docs/

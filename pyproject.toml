@@ -3,6 +3,11 @@ members = [
   "backend",
   "qwen-code-api",
   "mcp/mcp-lms",
+  "mcp/mcp-obs",
+  "nanobot",
+  "nanobot-websocket-channel/nanobot-channel-protocol",
+  "nanobot-websocket-channel/mcp-webchat",
+  "nanobot-websocket-channel/nanobot-webchat",
 
   # Uncomment these later in the lab after you add the matching repos/packages.
 
@@ -15,6 +20,11 @@ members = [
 
 [tool.uv.sources]
 mcp-lms = { path = "mcp/mcp-lms", editable = true }
+mcp-obs = { workspace = true }
+mcp-webchat = { workspace = true }
+nanobot-channel-protocol = { workspace = true }
+nanobot-webchat = { workspace = true }
+nanobot-ai = { url = "https://github.com/HKUDS/nanobot/archive/e7d371ec1e6531b28898ec2c869ef338e8dd46ec.zip" }
 
 # Uncomment these later in the lab after you add the matching repos/packages.
 
@@ -129,6 +139,7 @@ include = [
   "backend",
   "scripts",
   "mcp",
+  "nanobot/entrypoint.py",
   "qwen-code-api",
   
   # Uncomment this later in the lab after you add the matching repos/packages.
@@ -164,6 +175,7 @@ asyncio_mode = "auto"
 include = [
   "backend",
   "mcp",
+  "nanobot/entrypoint.py",
   "qwen-code-api",
   
   # Uncomment this later in the lab after you add the matching repos/packages.

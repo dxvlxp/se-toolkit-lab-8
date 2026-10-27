@@ -1,0 +1,22 @@
+[project]
+name = "lab8-agent"
+version = "0.1.0"
+description = "Repo-local LMS and observability agent"
+requires-python = "==3.14.*"
+dependencies = [
+  "nanobot-ai",
+  "mcp-lms",
+  "mcp-obs",
+  "mcp-webchat",
+  "nanobot-webchat",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+nanobot-ai = { url = "https://github.com/HKUDS/nanobot/archive/e7d371ec1e6531b28898ec2c869ef338e8dd46ec.zip" }
+mcp-lms = { workspace = true }
+mcp-obs = { workspace = true }
+mcp-webchat = { workspace = true }
+nanobot-webchat = { workspace = true }

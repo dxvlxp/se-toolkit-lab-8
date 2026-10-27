@@ -21,3 +21,7 @@ tmp
 /nanobot/config.json
 /nanobot/config.resolved.json
 /nanobot/workspace/sessions/
+/nanobot/workspace/cron/
+/nanobot/workspace/memory/
+/nanobot/workspace/history/
+/nanobot/.nanobot/
